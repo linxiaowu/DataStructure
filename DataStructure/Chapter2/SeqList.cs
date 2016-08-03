@@ -205,5 +205,29 @@ namespace DataStructure.Chapter2
             }
             return -1;
         }
+
+        /// <summary>
+        /// 倒置线性表
+        /// </summary>
+        public void Reverse()
+        {
+            T tmp = default(T);
+
+            int len = GetLength() - 1;
+            for (int i = 0; i <= len / 2; i++)
+            {
+                if (i.Equals(len - i))
+                {
+                    break;
+                }
+
+                tmp = Data[i];
+                Data[i] = Data[len - i];
+                Data[len - i] = tmp;
+                //Data[i] = Data[len - i] - Data[i];
+                //Data[len - i] = Data[len - i] - Data[i];
+                //Data[i] = Data[len - i] + Data[i];
+            }
+        }
     }
 }

@@ -61,5 +61,10 @@ namespace DataStructure.Chapter2
         /// <param name="value">值</param>
         /// <returns>线性表中首次出现时的位置</returns>
         int Locate(T value);
+
+        /// <summary>
+        /// 倒置线性表
+        /// </summary>
+        void Reverse();
     }
 }
