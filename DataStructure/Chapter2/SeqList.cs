@@ -114,21 +114,96 @@ namespace DataStructure.Chapter2
             {
                 throw new IndexOutOfRangeException("List is full");
             }
+
+            if (index < 0 || index > Last + 1)
+            {
+                throw new IndexOutOfRangeException("Position is error");
+            }
+
+            if (index.Equals(Last + 1))
+            {
+                Data[++Last] = item;
+                return;
+            }
+
+            for (int i = Last; i >= index; i--)
+            {
+                Data[i + 1] = Data[i];
+            }
+            Data[index] = item;
+            ++Last;
         }
 
+        /// <summary>
+        /// 删除制定位置元素
+        /// </summary>
+        /// <param name="index">元素位置</param>
+        /// <returns></returns>
         public T Delete(int index)
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new IndexOutOfRangeException("List is empty");
+            }
+
+            if (index < 0 || index > Last)
+            {
+                throw new IndexOutOfRangeException("Position is error");
+            }
+
+            if (index.Equals(Last))
+            {
+                return Data[Last--];
+            }
+
+            T tmp = Data[index];
+            for (int i = index; i <= Last; i++)
+            {
+                Data[i] = Data[i + 1];
+            }
+            --Last;
+            return tmp;
         }
 
+        /// <summary>
+        /// 获取指定位置元素
+        /// </summary>
+        /// <param name="index">元素位置</param>
+        /// <returns></returns>
         public T GetElem(int index)
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new IndexOutOfRangeException("List is empty");
+            }
+
+            if (index < 0 || index > Last)
+            {
+                throw new IndexOutOfRangeException("Position is error");
+            }
+            return Data[index];
         }
 
+        /// <summary>
+        /// 根据值查找元素位置
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public int Locate(T value)
         {
-            throw new NotImplementedException();
+            if (IsEmpty())
+            {
+                throw new IndexOutOfRangeException("List is empty");
+            }
+
+            for (int i = 0; i <= Last; i++)
+            {
+                if (value.Equals(Data[i]))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }
