@@ -61,7 +61,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public int GetLength()
         {
-            return this.Last + 1;
+            return Last + 1;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace DataStructure.Chapter2
         /// </summary>
         public void Clear()
         {
-            this.Last = -1;
+            Last = -1;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return this.Last.Equals(-1);
+            return Last.Equals(-1);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public bool IsFull()
         {
-            return this.Last.Equals(this.Maxsize - 1);
+            return Last.Equals(Maxsize - 1);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace DataStructure.Chapter2
             {
                 throw new IndexOutOfRangeException("List is full");
             }
-            this.Data[++this.Last] = item;
+            Data[++Last] = item;
         }
 
         /// <summary>

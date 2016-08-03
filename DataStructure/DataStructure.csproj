@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Chapter2\IListDS.cs" />
     <Compile Include="Chapter2\SeqList.cs" />
+    <Compile Include="Chapter2\SeqListTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
