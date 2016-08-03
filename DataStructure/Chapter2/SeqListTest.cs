@@ -33,6 +33,9 @@ namespace DataStructure.Chapter2
 
             list.Reverse();
             Print(list);
+            Console.WriteLine();
+
+            TestMerge();
         }
 
         /// <summary>
@@ -59,6 +62,63 @@ namespace DataStructure.Chapter2
                 Console.Write(list[i] + " ");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 测试合并
+        /// </summary>
+        static void TestMerge()
+        {
+            SeqList<int> la = new SeqList<int>(10);
+            la.Append(1);
+            la.Append(3);
+            la.Append(5);
+            la.Append(7);
+            la.Append(8);
+
+            SeqList<int> lb = new SeqList<int>(10);
+            lb.Append(2);
+            lb.Append(4);
+            lb.Append(6);
+            lb.Append(8);
+            lb.Append(11);
+
+            SeqList<int> lc = Merge(la, lb);
+            Console.WriteLine("测试Merge");
+            Print(lc);
+        }
+
+        /// <summary>
+        /// 有数据类型为整型的顺序表La和Lb，其数据元素均按从小到大的升序排列，编写一个算法将它们合并成一个表Lc，要求Lc中数据元素也按升序排列。 
+        /// </summary>
+        /// <param name="la"></param>
+        /// <param name="lb"></param>
+        /// <returns></returns>
+        static SeqList<int> Merge(SeqList<int> la, SeqList<int> lb)
+        {
+            SeqList<int> lc = new SeqList<int>(la.GetLength() + lb.GetLength());
+            int i = 0;
+            int j = 0;
+            while (i < la.GetLength() && j < lb.GetLength())
+            {
+                if (la[i] < lb[j])
+                {
+                    lc.Append(la[i++]);
+                    continue;
+                }
+                lc.Append(lb[j++]);
+            }
+
+            while (i < la.GetLength())
+            {
+                lc.Append(la[i++]);
+            }
+
+            while (j < lb.GetLength())
+            {
+                lc.Append(lb[j++]);
+            }
+            return lc;
         }
     }
 }
