@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chapter2\IListDS.cs" />
+    <Compile Include="Chapter2\LinkList.cs" />
+    <Compile Include="Chapter2\LinkListTest.cs" />
     <Compile Include="Chapter2\Node.cs" />
     <Compile Include="Chapter2\SeqList.cs" />
     <Compile Include="Chapter2\SeqListTest.cs" />
