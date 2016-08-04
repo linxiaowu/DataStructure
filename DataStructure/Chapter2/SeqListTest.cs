@@ -86,6 +86,10 @@ namespace DataStructure.Chapter2
             SeqList<int> lc = Merge(la, lb);
             Console.WriteLine("测试Merge");
             Print(lc);
+
+            Console.WriteLine("测试去重");
+            lc = Purge(lc);
+            Print(lc);
         }
 
         /// <summary>
@@ -119,6 +123,41 @@ namespace DataStructure.Chapter2
                 lc.Append(lb[j++]);
             }
             return lc;
+        }
+
+        /// <summary>
+        /// 已知一个存储整数的顺序表La，试构造顺序表Lb，要求顺序表Lb中只包含顺序表La中所有值不相同的数据元素
+        /// </summary>
+        /// <param name="la"></param>
+        /// <returns></returns>
+        static SeqList<int> Purge(SeqList<int> la)
+        {
+            int len = la.GetLength();
+            SeqList<int> lb = new SeqList<int>(len);
+            if (len <= 0)
+            {
+                return lb;
+            }
+
+            lb.Append(la[0]);
+
+            for (int i = 1; i < len; i++)
+            {
+                int j = 0;
+                for (; j < lb.GetLength(); j++)
+                {
+                    if (lb[j].Equals(la[i]))
+                    {
+                        break;
+                    }
+                }
+
+                if (j >= lb.GetLength())
+                {
+                    lb.Append(la[i]);
+                }
+            }
+            return lb;
         }
     }
 }
