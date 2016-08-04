@@ -12,6 +12,8 @@ namespace DataStructure
         static void Main(string[] args)
         {
             SeqListTest.TestSeqList();
+
+            LinkedList<int> a = new LinkedList<int>();
         }
     }
 }
