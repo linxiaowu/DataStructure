@@ -87,9 +87,9 @@ namespace DataStructure.Chapter2
         /// <param name="index">位置</param>
         public void Insert(T item, int index)
         {
-            if (index < 0)
+            if (IsEmpty() || index < 0)
             {
-                throw new IndexOutOfRangeException("Position is error");
+                throw new IndexOutOfRangeException("List is empty or Position is error");
             }
 
             Node<T> newNode = new Node<T>(item);
@@ -121,9 +121,42 @@ namespace DataStructure.Chapter2
             }
         }
 
+        /// <summary>
+        /// 删除链表元素
+        /// </summary>
+        /// <param name="index">元素位置</param>
+        /// <returns></returns>
         public T Delete(int index)
         {
-            throw new NotImplementedException();
+            if (IsEmpty() || index < 0)
+            {
+                throw new IndexOutOfRangeException("List is empty or Position is error");
+            }
+
+            Node<T> tmp = new Node<T>();
+
+            if (index.Equals(0))
+            {
+                tmp = Head;
+                Head = Head.Next;
+                return tmp.Data;
+            }
+
+            Node<T> cur = Head;
+            int i = 0;
+            while (cur.Next != null && i < index - 1)
+            {
+                i++;
+                cur = cur.Next;
+            }
+
+            if (cur.Next == null)
+            {
+                throw new IndexOutOfRangeException("The ith node is not exist");
+            }
+            tmp = cur.Next;
+            cur.Next = tmp.Next;
+            return tmp.Data;
         }
 
         public T GetElem(int index)

@@ -17,9 +17,13 @@ namespace DataStructure.Chapter2
             Console.WriteLine("初始化数据");
             InitData(list);
             Print(list);
-            
+
             Console.WriteLine("测试Insert");
             TestInsert(list);
+            Print(list);
+
+            Console.WriteLine("测试Delete");
+            TestDelete(list);
             Print(list);
         }
 
@@ -47,6 +51,17 @@ namespace DataStructure.Chapter2
             list.Insert(16, 6);
             list.Insert(18, 7);
             list.Insert(20, 10);
+        }
+
+        /// <summary>
+        /// 测试删除
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestDelete(LinkList<int> list)
+        {
+            Console.WriteLine("删除Index=0：" + list.Delete(0));
+            Console.WriteLine("删除Index=2：" + list.Delete(2));
+            Console.WriteLine("删除Index=7：" + list.Delete(7));
         }
 
         /// <summary>
