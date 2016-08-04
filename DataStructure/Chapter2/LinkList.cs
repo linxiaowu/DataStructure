@@ -159,19 +159,57 @@ namespace DataStructure.Chapter2
             return tmp.Data;
         }
 
+        /// <summary>
+        /// 获取链表元素
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T GetElem(int index)
         {
-            throw new NotImplementedException();
+            if (IsEmpty() || index < 0)
+            {
+                throw new IndexOutOfRangeException("List is empty or Position is error");
+            }
+
+            Node<T> cur = Head;
+            int i = 0;
+            while (cur.Next != null && i < index)
+            {
+                cur = cur.Next;
+                i++;
+            }
+
+            if (i.Equals(index))
+            {
+                return cur.Data;
+            }
+            throw new IndexOutOfRangeException("The ith node is not exist");
         }
 
+        /// <summary>
+        /// 根据值定位元素的位置
+        /// </summary>
+        /// <param name="value">值</param>
+        /// <returns></returns>
         public int Locate(T value)
         {
-            throw new NotImplementedException();
-        }
+            if (IsEmpty())
+            {
+                throw new IndexOutOfRangeException("List is empty");
+            }
 
-        public void Reverse()
-        {
-            throw new NotImplementedException();
+            Node<T> cur = Head;
+            int index = -1;
+            while (cur != null)
+            {
+                index++;
+                if (cur.Data.Equals(value))
+                {
+                    return index;
+                }
+                cur = cur.Next;
+            }
+            return -1;
         }
     }
 }

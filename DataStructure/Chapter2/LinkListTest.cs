@@ -18,13 +18,19 @@ namespace DataStructure.Chapter2
             InitData(list);
             Print(list);
 
-            Console.WriteLine("测试Insert");
+            Console.WriteLine("\r\n测试Insert");
             TestInsert(list);
             Print(list);
 
-            Console.WriteLine("测试Delete");
+            Console.WriteLine("\r\n测试Delete");
             TestDelete(list);
             Print(list);
+
+            Console.WriteLine("\r\n测试GetElem");
+            TestGetElem(list);
+
+            Console.WriteLine("\r\n测试Locate");
+            TestLocate(list);
         }
 
         /// <summary>
@@ -62,6 +68,29 @@ namespace DataStructure.Chapter2
             Console.WriteLine("删除Index=0：" + list.Delete(0));
             Console.WriteLine("删除Index=2：" + list.Delete(2));
             Console.WriteLine("删除Index=7：" + list.Delete(7));
+        }
+
+        /// <summary>
+        /// 测试元素获取
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestGetElem(LinkList<int> list)
+        {
+            Console.WriteLine("获取元素Index=0：" + list.GetElem(0));
+            Console.WriteLine("获取元素Index=2：" + list.GetElem(2));
+            Console.WriteLine("获取元素Index=6：" + list.GetElem(6));
+        }
+
+        /// <summary>
+        /// 测试元素定位
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestLocate(LinkList<int> list)
+        {
+            Console.WriteLine("获取元素位置Value=1：" + list.Locate(1));
+            Console.WriteLine("获取元素位置Value=5：" + list.Locate(5));
+            Console.WriteLine("获取元素位置Value=9：" + list.Locate(9));
+            Console.WriteLine("获取元素位置Value=3：" + list.Locate(3));
         }
 
         /// <summary>
