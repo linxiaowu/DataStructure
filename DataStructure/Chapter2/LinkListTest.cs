@@ -33,9 +33,20 @@ namespace DataStructure.Chapter2
             TestLocate(list);
 
             Console.WriteLine("\r\n测试Reverse");
-            list.Reverse(); 
+            list.Reverse();
             Print(list);
 
+            Console.WriteLine("\r\n测试Merge");
+            LinkList<int> la = new LinkList<int>();
+            LinkList<int> lb = new LinkList<int>();
+            TestAppend(la);
+            TestAppend(lb);
+            lb.Append(11);
+            lb.Append(20);
+            Print(la);
+            Print(lb);
+            LinkList<int> lc = Merge(la, lb);
+            Print(lc);
         }
 
         /// <summary>
@@ -96,6 +107,48 @@ namespace DataStructure.Chapter2
             Console.WriteLine("获取元素位置Value=5：" + list.Locate(5));
             Console.WriteLine("获取元素位置Value=9：" + list.Locate(9));
             Console.WriteLine("获取元素位置Value=3：" + list.Locate(3));
+        }
+
+
+        static LinkList<int> Merge(LinkList<int> la, LinkList<int> lb)
+        {
+            LinkList<int> lc = new LinkList<int>();
+            Node<int> laHead = la.Head;
+            Node<int> lbHead = lb.Head;
+            Node<int> lcLast = lc.Head;
+            Node<int> tmp = null;
+            while (laHead != null && lbHead != null)
+            {
+                if (laHead.Data < lbHead.Data)
+                {
+                    tmp = laHead;
+                    laHead = laHead.Next;
+                }
+                else
+                {
+                    tmp = lbHead;
+                    lbHead = lbHead.Next;
+                }
+
+                if (lc.Head == null)
+                {
+                    //lc.Append(tmp.Data);
+                    lc.Head = tmp;
+                    lcLast = lc.Head;
+                }
+                else
+                {
+                    lcLast.Next = tmp;
+                    lcLast = lcLast.Next;
+                }
+            }
+
+            if (laHead == null)
+            {
+                laHead = lbHead;
+            }
+            lcLast.Next = laHead;
+            return lc;
         }
 
         /// <summary>
