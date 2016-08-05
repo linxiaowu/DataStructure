@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chapter2\DbNode.cs" />
     <Compile Include="Chapter2\IListDS.cs" />
     <Compile Include="Chapter2\LinkList.cs" />
     <Compile Include="Chapter2\LinkListTest.cs" />
