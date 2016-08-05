@@ -14,8 +14,8 @@ namespace DataStructure.Chapter2
         public static void TestLinkList()
         {
             LinkList<int> list = new LinkList<int>();
-            Console.WriteLine("初始化数据");
-            InitData(list);
+            Console.WriteLine("测试Append");
+            TestAppend(list);
             Print(list);
 
             Console.WriteLine("\r\n测试Insert");
@@ -34,10 +34,10 @@ namespace DataStructure.Chapter2
         }
 
         /// <summary>
-        /// 初始化链表数据
+        /// 测试Append方法
         /// </summary>
         /// <param name="list"></param>
-        static void InitData(LinkList<int> list)
+        static void TestAppend(LinkList<int> list)
         {
             list.Append(1);
             list.Append(3);

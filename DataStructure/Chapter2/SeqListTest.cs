@@ -17,38 +17,85 @@ namespace DataStructure.Chapter2
         public static void TestSeqList()
         {
             SeqList<int> list = new SeqList<int>(10);
-            InitData(list);
+            Console.WriteLine("测试Append方法");
+            TestAppend(list);
             Print(list);
 
-            list.Insert(10, 3);
+            Console.WriteLine("\n\r测试Insert方法");
+            TestInsert(list);
             Print(list);
 
-            Console.WriteLine("线性表长度：" + list.GetLength());
-            Console.WriteLine("删除数据：" + list.Delete(2));
-            Console.WriteLine("删除后长度：" + list.GetLength());
+            Console.WriteLine("\n\r测试Delete方法");
+            TestDelete(list);
             Print(list);
 
-            Console.WriteLine("第三个数据：" + list.GetElem(2));
-            Console.WriteLine("10的位置：" + list.Locate(10));
+            Console.WriteLine("\r\n测试GetElem方法");
+            TestGetElem(list);
 
+            Console.WriteLine("\r\n测试Locate方法");
+            TestLocate(list);
+
+            Console.WriteLine("\r\n测试Reverse方法");
             list.Reverse();
             Print(list);
-            Console.WriteLine();
 
+            Console.WriteLine("");
             TestMerge();
         }
 
         /// <summary>
-        /// 初始化数据
+        /// 测试Append方法
         /// </summary>
-        /// <param name="">线性表</param>
-        static void InitData(SeqList<int> list)
+        /// <param name="list"></param>
+        static void TestAppend(SeqList<int> list)
         {
             list.Append(1);
             list.Append(2);
             list.Append(3);
             list.Append(4);
             list.Append(5);
+        }
+
+        /// <summary>
+        /// 测试Insert方法
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestInsert(SeqList<int> list)
+        {
+            list.Insert(10, 3);
+            list.Insert(20, 5);
+        }
+
+        /// <summary>
+        /// 测试Delete方法
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestDelete(SeqList<int> list)
+        {
+            Console.WriteLine("删除数据Index=2：" + list.Delete(2));
+            Console.WriteLine("删除数据Index=4：" + list.Delete(4));
+        }
+
+        /// <summary>
+        /// 测试GetElem方法
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestGetElem(SeqList<int> list)
+        {
+            Console.WriteLine("获取元素Index=0：" + list.GetElem(0));
+            Console.WriteLine("获取元素Index=2：" + list.GetElem(2));
+            Console.WriteLine("获取元素Index=3：" + list.GetElem(3));
+        }
+
+        /// <summary>
+        /// 测试元素定位
+        /// </summary>
+        /// <param name="list"></param>
+        static void TestLocate(SeqList<int> list)
+        {
+            Console.WriteLine("获取元素位置Value=1：" + list.Locate(1));
+            Console.WriteLine("获取元素位置Value=10：" + list.Locate(10));
+            Console.WriteLine("获取元素位置Value=4：" + list.Locate(4));
         }
 
         /// <summary>
