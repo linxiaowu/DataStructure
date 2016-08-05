@@ -31,6 +31,11 @@ namespace DataStructure.Chapter2
 
             Console.WriteLine("\r\n测试Locate");
             TestLocate(list);
+
+            Console.WriteLine("\r\n测试Reverse");
+            list.Reverse(); 
+            Print(list);
+
         }
 
         /// <summary>

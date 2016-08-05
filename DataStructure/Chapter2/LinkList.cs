@@ -211,5 +211,24 @@ namespace DataStructure.Chapter2
             }
             return -1;
         }
+
+        /// <summary>
+        /// 倒置单链表
+        /// </summary>
+        public void Reverse()
+        {
+            Node<T> oldHead = Head;
+            Node<T> tmp ;
+            Head = null;    //清空链表，解除Head跟oldHead之间的相同引用
+
+            while (oldHead != null)
+            {
+                tmp = Head;
+                Head = oldHead;
+                //解除Head跟oldHead之间的相同引用
+                oldHead = oldHead.Next;
+                Head.Next = tmp;
+            }
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            SeqListTest.TestSeqList();
-            //LinkListTest.TestLinkList();
+            //SeqListTest.TestSeqList();
+            LinkListTest.TestLinkList();
         }
     }
 }
