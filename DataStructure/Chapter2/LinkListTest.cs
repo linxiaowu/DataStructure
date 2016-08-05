@@ -47,6 +47,9 @@ namespace DataStructure.Chapter2
             Print(lb);
             LinkList<int> lc = Merge(la, lb);
             Print(lc);
+
+            Console.WriteLine("\r\n测试Purge");
+            Print(Purge(lc));
         }
 
         /// <summary>
@@ -109,7 +112,12 @@ namespace DataStructure.Chapter2
             Console.WriteLine("获取元素位置Value=3：" + list.Locate(3));
         }
 
-
+        /// <summary>
+        /// 合并
+        /// </summary>
+        /// <param name="la"></param>
+        /// <param name="lb"></param>
+        /// <returns></returns>
         static LinkList<int> Merge(LinkList<int> la, LinkList<int> lb)
         {
             LinkList<int> lc = new LinkList<int>();
@@ -149,6 +157,47 @@ namespace DataStructure.Chapter2
             }
             lcLast.Next = laHead;
             return lc;
+        }
+
+        /// <summary>
+        /// 去重
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        static LinkList<int> Purge(LinkList<int> list)
+        {
+            LinkList<int> newList = new LinkList<int>();
+            if (list.Head == null)
+            {
+                return newList;
+            }
+
+            Node<int> cur = list.Head.Next;
+            Node<int> tmp;
+            newList.Head = list.Head;
+            newList.Head.Next = null;
+            while (cur != null)
+            {
+                tmp = cur;          //保存当前对象
+                cur = cur.Next;
+                tmp.Next = null;    //清除引用
+                Node<int> newCur = newList.Head;
+                if (newCur.Data.Equals(tmp.Data))
+                {
+                    continue;
+                }
+
+                while (newCur.Next != null && newCur.Next.Data != tmp.Data)
+                {
+                    newCur = newCur.Next;
+                }
+
+                if (newCur.Next == null)
+                {
+                    newCur.Next = tmp;
+                }
+            }
+            return newList;
         }
 
         /// <summary>
