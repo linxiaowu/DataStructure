@@ -20,12 +20,12 @@ namespace DataStructure.Chapter2
         /// <summary>
         /// 顺序表中的数据数组
         /// </summary>
-        public T[] Data { get; set; }
+        private T[] data;
 
         /// <summary>
         /// 顺序表中的最后一个元素位置
         /// </summary>
-        public int Last { get; private set; }
+        private int last;
 
         /// <summary>
         /// 索引器
@@ -36,11 +36,11 @@ namespace DataStructure.Chapter2
         {
             get
             {
-                return Data[index];
+                return data[index];
             }
             set
             {
-                Data[index] = value;
+                data[index] = value;
             }
         }
 
@@ -50,9 +50,9 @@ namespace DataStructure.Chapter2
         /// <param name="size">顺序表最大长度</param>
         public SeqList(int size)
         {
-            this.Data = new T[size];
+            this.data = new T[size];
             this.Maxsize = size;
-            this.Last = -1;
+            this.last = -1;
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public int GetLength()
         {
-            return Last + 1;
+            return last + 1;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace DataStructure.Chapter2
         /// </summary>
         public void Clear()
         {
-            Last = -1;
+            last = -1;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return Last.Equals(-1);
+            return last.Equals(-1);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace DataStructure.Chapter2
         /// <returns></returns>
         public bool IsFull()
         {
-            return Last.Equals(Maxsize - 1);
+            return last.Equals(Maxsize - 1);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace DataStructure.Chapter2
             {
                 throw new IndexOutOfRangeException("List is full");
             }
-            Data[++Last] = item;
+            data[++last] = item;
         }
 
         /// <summary>
@@ -115,23 +115,23 @@ namespace DataStructure.Chapter2
                 throw new IndexOutOfRangeException("List is full");
             }
 
-            if (index < 0 || index > Last + 1)
+            if (index < 0 || index > last + 1)
             {
                 throw new IndexOutOfRangeException("Position is error");
             }
 
-            if (index.Equals(Last + 1))
+            if (index.Equals(last + 1))
             {
-                Data[++Last] = item;
+                data[++last] = item;
                 return;
             }
 
-            for (int i = Last; i >= index; i--)
+            for (int i = last; i >= index; i--)
             {
-                Data[i + 1] = Data[i];
+                data[i + 1] = data[i];
             }
-            Data[index] = item;
-            ++Last;
+            data[index] = item;
+            ++last;
         }
 
         /// <summary>
@@ -146,22 +146,22 @@ namespace DataStructure.Chapter2
                 throw new IndexOutOfRangeException("List is empty");
             }
 
-            if (index < 0 || index > Last)
+            if (index < 0 || index > last)
             {
                 throw new IndexOutOfRangeException("Position is error");
             }
 
-            if (index.Equals(Last))
+            if (index.Equals(last))
             {
-                return Data[Last--];
+                return data[last--];
             }
 
-            T tmp = Data[index];
-            for (int i = index; i <= Last; i++)
+            T tmp = data[index];
+            for (int i = index; i <= last; i++)
             {
-                Data[i] = Data[i + 1];
+                data[i] = data[i + 1];
             }
-            --Last;
+            --last;
             return tmp;
         }
 
@@ -177,11 +177,11 @@ namespace DataStructure.Chapter2
                 throw new IndexOutOfRangeException("List is empty");
             }
 
-            if (index < 0 || index > Last)
+            if (index < 0 || index > last)
             {
                 throw new IndexOutOfRangeException("Position is error");
             }
-            return Data[index];
+            return data[index];
         }
 
         /// <summary>
@@ -196,9 +196,9 @@ namespace DataStructure.Chapter2
                 throw new IndexOutOfRangeException("List is empty");
             }
 
-            for (int i = 0; i <= Last; i++)
+            for (int i = 0; i <= last; i++)
             {
-                if (value.Equals(Data[i]))
+                if (value.Equals(data[i]))
                 {
                     return i;
                 }
@@ -221,9 +221,9 @@ namespace DataStructure.Chapter2
                     break;
                 }
 
-                tmp = Data[i];
-                Data[i] = Data[len - i];
-                Data[len - i] = tmp;
+                tmp = data[i];
+                data[i] = data[len - i];
+                data[len - i] = tmp;
                 //Data[i] = Data[len - i] - Data[i];
                 //Data[len - i] = Data[len - i] - Data[i];
                 //Data[i] = Data[len - i] + Data[i];
