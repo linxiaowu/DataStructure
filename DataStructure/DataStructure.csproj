@@ -52,7 +52,7 @@
     <Compile Include="Chapter3\LinkStack.cs" />
     <Compile Include="Chapter3\Node.cs" />
     <Compile Include="Chapter3\SeqStack.cs" />
-    <Compile Include="Chapter3\SeqStackTest.cs" />
+    <Compile Include="Chapter3\StackTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

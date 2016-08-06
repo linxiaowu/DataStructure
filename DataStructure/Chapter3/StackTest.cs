@@ -9,14 +9,32 @@ namespace DataStructure.Chapter3
     /// <summary>
     /// 测试顺序栈
     /// </summary>
-    static class SeqStackTest
+    static class StackTest
     {
         /// <summary>
         /// 测试顺序栈
         /// </summary>
         public static void TestSeqStack()
         {
-            SeqStack<int> stack = new SeqStack<int>(20);
+            IStack<int> stack = new SeqStack<int>(20);
+            Test(stack);
+        }
+
+        /// <summary>
+        /// 测试链栈
+        /// </summary>
+        public static void TestLinkStack()
+        {
+            IStack<int> stack = new LinkStack<int>();
+            Test(stack);
+        }
+
+        /// <summary>
+        /// 测试栈
+        /// </summary>
+        /// <param name="stack"></param>
+        static void Test(IStack<int> stack)
+        {
             Console.WriteLine("len：" + stack.GetLength());
             Console.WriteLine("\r\n测试Push方法");
             TestPush(stack);
@@ -36,7 +54,7 @@ namespace DataStructure.Chapter3
         /// 测试Push方法
         /// </summary>
         /// <param name="stack"></param>
-        static void TestPush(SeqStack<int> stack)
+        static void TestPush(IStack<int> stack)
         {
             stack.Push(1);
             stack.Push(2);
@@ -50,7 +68,7 @@ namespace DataStructure.Chapter3
         /// 测试GetPop方法
         /// </summary>
         /// <param name="stack"></param>
-        static void TestGetPop(SeqStack<int> stack)
+        static void TestGetPop(IStack<int> stack)
         {
             Console.WriteLine("期望6：" + stack.GetPop());
         }
@@ -59,7 +77,7 @@ namespace DataStructure.Chapter3
         /// 测试TestPop方法
         /// </summary>
         /// <param name="stack"></param>
-        static void TestPop(SeqStack<int> stack)
+        static void TestPop(IStack<int> stack)
         {
             while (!stack.IsEmpty())
             {
