@@ -48,6 +48,10 @@ namespace DataStructure.Chapter3
             Console.WriteLine("\n\r测试Pop方法");
             TestPop(stack);
             Console.WriteLine("期望长度0，len：" + stack.GetLength());
+
+            Console.WriteLine("\n\r进制转换，12：");
+            Conversion(12, 8);
+            Conversion(12, 2);
         }
 
         /// <summary>
@@ -81,7 +85,28 @@ namespace DataStructure.Chapter3
         {
             while (!stack.IsEmpty())
             {
-                Console.Write(stack.Pop()+" ");
+                Console.Write(stack.Pop() + " ");
+            }
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 进制转换
+        /// </summary>
+        /// <param name="n">原始数据</param>
+        /// <param name="m">待转换进制</param>
+        static void Conversion(int n, int m)
+        {
+            LinkStack<int> s = new LinkStack<int>();
+            while (n > 0)
+            {
+                s.Push(n % m);
+                n /= m;
+            }
+
+            while (!s.IsEmpty())
+            {
+                Console.Write(s.Pop() + " ");
             }
             Console.WriteLine();
         }
