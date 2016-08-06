@@ -12,20 +12,13 @@ namespace DataStructure.Chapter2
     /// <typeparam name="T"></typeparam>
     class SeqList<T> : IListDS<T>
     {
+        private T[] data;   //表数据
+        private int last;   //最后一个元素位置
+
         /// <summary>
         /// 顺序表最大容量
         /// </summary>
         public int Maxsize { get; private set; }
-
-        /// <summary>
-        /// 顺序表中的数据数组
-        /// </summary>
-        private T[] data;
-
-        /// <summary>
-        /// 顺序表中的最后一个元素位置
-        /// </summary>
-        private int last;
 
         /// <summary>
         /// 索引器
