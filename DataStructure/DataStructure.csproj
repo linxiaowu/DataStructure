@@ -50,6 +50,7 @@
     <Compile Include="Chapter2\SeqListTest.cs" />
     <Compile Include="Chapter3\IStack.cs" />
     <Compile Include="Chapter3\SeqStack.cs" />
+    <Compile Include="Chapter3\SeqStackTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using DataStructure.Chapter2;
+using DataStructure.Chapter3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace DataStructure
         static void Main(string[] args)
         {
             //SeqListTest.TestSeqList();
-            LinkListTest.TestLinkList();
+            //LinkListTest.TestLinkList();
+            SeqStackTest.TestSeqStack();
         }
     }
 }
