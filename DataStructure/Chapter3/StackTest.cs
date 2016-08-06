@@ -27,6 +27,17 @@ namespace DataStructure.Chapter3
         {
             IStack<int> stack = new LinkStack<int>();
             Test(stack);
+
+            Console.WriteLine("\n\r括号匹配：");
+            char[] arr = { '{', '[', '(', ')', ']', '(', ')', '}' };
+            char[] arr2 = { '{', '(', '[', ')', ']', '(', ')', '}' };
+            Console.Write(arr);
+            Console.Write(":" + MatchBracket(arr));
+            Console.WriteLine();
+
+            Console.Write(arr2);
+            Console.Write(":" + MatchBracket(arr2));
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -93,7 +104,7 @@ namespace DataStructure.Chapter3
         /// <summary>
         /// 进制转换
         /// </summary>
-        /// <param name="n">原始数据</param>
+        /// <param name="n">十进制数据</param>
         /// <param name="m">待转换进制</param>
         static void Conversion(int n, int m)
         {
@@ -109,6 +120,81 @@ namespace DataStructure.Chapter3
                 Console.Write(s.Pop() + " ");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 括号匹配
+        /// </summary>
+        /// <param name="charlist"></param>
+        /// <returns></returns>
+        static bool MatchBracket(char[] charlist)
+        {
+            LinkStack<char> stack = new LinkStack<char>();
+            foreach (char c in charlist)
+            {
+                if (stack.IsEmpty())
+                {
+                    stack.Push(c);
+                    continue;
+                }
+
+                if (stack.GetPop().Equals('(') && c.Equals(')'))
+                {
+                    stack.Pop();
+                    continue;
+                }
+
+                if (stack.GetPop().Equals('[') && c.Equals(']'))
+                {
+                    stack.Pop();
+                    continue;
+                }
+
+                if (stack.GetPop().Equals('{') && c.Equals('}'))
+                {
+                    stack.Pop();
+                    continue;
+                }
+
+                stack.Push(c);
+            }
+            return stack.IsEmpty();
+        }
+
+        /// <summary>
+        /// 计算表达式
+        /// </summary>
+        /// <returns></returns>
+        static int EvaluateExpression()
+        {
+            SeqStack<char> optr = new SeqStack<char>(20);
+            SeqStack<int> opnd = new SeqStack<int>(20);
+            optr.Push('#');
+
+            char c = (char)Console.Read();
+
+            while (c != '#')
+            {
+                if (!IsOperator(c))
+                {
+                    optr.Push(c);
+                }
+            }
+            char tehta = (char)0;
+            int a = 0;
+            int b = 0;
+            return 0;
+        }
+
+        /// <summary>
+        /// 是否为运算符
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        static bool IsOperator(char c)
+        {
+            char[] arr = { '+', '-', '*', '/', '(', ')' };
+            return arr.Contains(c);
         }
     }
 }
