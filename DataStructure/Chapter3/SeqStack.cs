@@ -119,7 +119,7 @@ namespace DataStructure.Chapter3
         /// 获取栈顶元素
         /// </summary>
         /// <returns></returns>
-        public T GetPop()
+        public T GetTop()
         {
             if (IsEmpty())
             {
