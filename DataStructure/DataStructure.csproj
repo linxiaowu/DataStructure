@@ -51,6 +51,7 @@
     <Compile Include="Chapter3\CSeqQueue.cs" />
     <Compile Include="Chapter3\IQueue.cs" />
     <Compile Include="Chapter3\IStack.cs" />
+    <Compile Include="Chapter3\LinkQueue.cs" />
     <Compile Include="Chapter3\LinkStack.cs" />
     <Compile Include="Chapter3\Node.cs" />
     <Compile Include="Chapter3\SeqStack.cs" />
