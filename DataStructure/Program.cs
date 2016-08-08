@@ -14,8 +14,10 @@ namespace DataStructure
         {
             //SeqListTest.TestSeqList();
             //LinkListTest.TestLinkList();
-            StackTest.TestSeqStack();
+            //StackTest.TestSeqStack();
             //StackTest.TestLinkStack();
+            //QueueTest.TestLinkQueue();
+            QueueTest.TestCSeqQueue();
         }
     }
 }

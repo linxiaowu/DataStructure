@@ -54,6 +54,7 @@
     <Compile Include="Chapter3\LinkQueue.cs" />
     <Compile Include="Chapter3\LinkStack.cs" />
     <Compile Include="Chapter3\Node.cs" />
+    <Compile Include="Chapter3\QueueTest.cs" />
     <Compile Include="Chapter3\SeqStack.cs" />
     <Compile Include="Chapter3\StackTest.cs" />
     <Compile Include="Program.cs" />
