@@ -45,6 +45,9 @@ namespace DataStructure.Chapter3
             Console.WriteLine("\n\r测试Out方法");
             TestOut(queue);
             Console.WriteLine("期望长度0，len：" + queue.GetLength());
+
+            string str = Console.ReadLine();
+            Console.WriteLine(IsPalindrome(str));
         }
 
         /// <summary>
@@ -81,6 +84,31 @@ namespace DataStructure.Chapter3
                 Console.Write(queue.Out() + " ");
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 判断字符串是否是回文
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        static bool IsPalindrome(string str)
+        {
+            SeqStack<char> stack = new SeqStack<char>(20);
+            CSeqQueue<char> queue = new CSeqQueue<char>(20);
+            foreach (char c in str)
+            {
+                queue.In(c);
+                stack.Push(c);
+            }
+
+            while (!queue.IsEmpty() && !stack.IsEmpty())
+            {
+                if (stack.Pop() != queue.Out())
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
