@@ -108,7 +108,7 @@ namespace DataStructure.Chapter4
         /// <returns></returns>
         public StringDS SubString(int index, int len)
         {
-            if (index < 0 || index > this.GetLength() - 1 || len < 0 || len + index - 1 < this.GetLength())
+            if (index < 0 || index > this.GetLength() - 1 || len < 0 || len + index > this.GetLength())
             {
                 throw new Exception("Position or Length is error!");
             }
@@ -137,6 +137,63 @@ namespace DataStructure.Chapter4
             for (int i = 0; i < s.GetLength(); i++)
             {
                 arr[this.GetLength() + i] = s[i];
+            }
+            return new StringDS(arr);
+        }
+
+        /// <summary>
+        /// 串插入
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public StringDS Insert(int index, StringDS s)
+        {
+            if (index < 0 || index > this.GetLength() - 1)
+            {
+                throw new Exception("Position is error!");
+            }
+
+            char[] arr = new char[s.GetLength() + this.GetLength()];
+            for (int i = 0; i < index; i++)
+            {
+                arr[i] = this[i];
+            }
+
+            for (int i = 0; i < s.GetLength(); i++)
+            {
+                arr[index + i] = s[i];
+            }
+
+            for (int i = index; i < this.GetLength(); i++)
+            {
+                arr[s.GetLength() + index] = this[i];
+            }
+            return new StringDS(arr);
+        }
+
+        /// <summary>
+        /// 串删除
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        public StringDS Delete(int index, int len)
+        {
+            if (index < 0 || index > this.GetLength() - 1 || len < 0 || len + index > this.GetLength())
+            {
+                throw new Exception("Position or Length is error!");
+            }
+            char[] arr = new char[this.GetLength() - len];
+
+            for (int i = 0; i < index; i++)
+            {
+                arr[i] = this[i];
+            }
+
+            for (int i = index ; i < this.GetLength()-len; i++)
+            {
+                arr[i] = this[i + len];
             }
             return new StringDS(arr);
         }
