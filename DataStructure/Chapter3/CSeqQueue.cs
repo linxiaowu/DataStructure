@@ -85,7 +85,7 @@ namespace DataStructure.Chapter3
         /// <returns></returns>
         private bool IsFull()
         {
-            return (Rear + 1) % Maxsize == Front;
+            return (Rear + 1 - Front + Maxsize) % Maxsize == 0;
         }
 
         /// <summary>
