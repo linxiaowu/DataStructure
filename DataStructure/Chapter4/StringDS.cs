@@ -191,11 +191,39 @@ namespace DataStructure.Chapter4
                 arr[i] = this[i];
             }
 
-            for (int i = index ; i < this.GetLength()-len; i++)
+            for (int i = index; i < this.GetLength() - len; i++)
             {
                 arr[i] = this[i + len];
             }
             return new StringDS(arr);
+        }
+
+        /// <summary>
+        /// 串定位
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int Index(StringDS s)
+        {
+            if (this.GetLength() < s.GetLength())
+            {
+                throw new Exception("There is not string s");
+            }
+            int i = 0;
+            for (; i <= this.GetLength() - s.GetLength(); i++)
+            {
+                StringDS sub = this.SubString(i, s.GetLength());
+                if (sub.Compare(s) == 0)
+                {
+                    break;
+                }
+            }
+
+            if (i <= this.GetLength() - s.GetLength())
+            {
+                return i;
+            }
+            return -1;
         }
     }
 }
