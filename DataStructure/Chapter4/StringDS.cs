@@ -167,7 +167,7 @@ namespace DataStructure.Chapter4
 
             for (int i = index; i < this.GetLength(); i++)
             {
-                arr[s.GetLength() + index] = this[i];
+                arr[s.GetLength() + i] = this[i];
             }
             return new StringDS(arr);
         }

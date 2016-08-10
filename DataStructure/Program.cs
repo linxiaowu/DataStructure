@@ -1,5 +1,6 @@
 ﻿using DataStructure.Chapter2;
 using DataStructure.Chapter3;
+using DataStructure.Chapter4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace DataStructure
             //StackTest.TestSeqStack();
             //StackTest.TestLinkStack();
             //QueueTest.TestLinkQueue();
-            QueueTest.TestCSeqQueue();
+            //QueueTest.TestCSeqQueue();
+            StringDSTest.TestStringDS();
         }
     }
 }

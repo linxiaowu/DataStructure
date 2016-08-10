@@ -58,6 +58,7 @@
     <Compile Include="Chapter3\SeqStack.cs" />
     <Compile Include="Chapter3\StackTest.cs" />
     <Compile Include="Chapter4\StringDS.cs" />
+    <Compile Include="Chapter4\StringDSTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
