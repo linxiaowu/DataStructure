@@ -45,6 +45,18 @@ namespace DataStructure.Chapter5
         /// <summary>
         /// 构造方法
         /// </summary>
+        /// <param name="weight"></param>
+        public HNode(int weight)
+        {
+            this.Weight = weight;
+            this.LChild = -1;
+            this.RChild = -1;
+            this.Parent = -1;
+        }
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
         /// <param name="weight">节点权重</param>
         /// <param name="lc">左孩子位置</param>
         /// <param name="rc">右孩子位置</param>

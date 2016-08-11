@@ -62,6 +62,8 @@
     <Compile Include="Chapter5\BiTree.cs" />
     <Compile Include="Chapter5\BiTreeTest.cs" />
     <Compile Include="Chapter5\HNode.cs" />
+    <Compile Include="Chapter5\HuffmanTree.cs" />
+    <Compile Include="Chapter5\HuffmanTreeTest.cs" />
     <Compile Include="Chapter5\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

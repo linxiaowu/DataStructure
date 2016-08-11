@@ -21,7 +21,8 @@ namespace DataStructure
             //QueueTest.TestLinkQueue();
             //QueueTest.TestCSeqQueue();
             //StringDSTest.TestStringDS();
-            BiTreeTest.TestBiTree();
+            //BiTreeTest.TestBiTree();
+            HuffmanTreeTest.TestHuffmanTree();
         }
     }
 }
