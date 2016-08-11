@@ -41,6 +41,25 @@ namespace DataStructure.Chapter5
             Console.Write("结果：");
             LevelOrder(tree.Head);
             Console.WriteLine("\r\n");
+
+            Console.WriteLine("测试Search");
+            char value = (char)Console.Read();
+            Node<char> tmp = Search(tree.Head, value);
+            if (tmp == null)
+            {
+                Console.WriteLine(value + "不存在");
+            }
+            else
+            {
+                Console.WriteLine(string.Format("L:{0}，R:{1}", (tmp.LChild ?? new Node<char>()).Data, (tmp.RChild ?? new Node<char>()).Data));
+            }
+
+            Console.WriteLine("\r\n统计叶子节点数量：" + CountLeafNode(tree.Head));
+
+            Console.WriteLine("\r\n计算树的深度：" + GetHeight(tree.Head));
+
+            Console.WriteLine("\r\n输出树结构：");
+            PrintTree(tree.Head);
         }
 
         /// <summary>
@@ -145,6 +164,119 @@ namespace DataStructure.Chapter5
                 }
             }
         }
+
+        /// <summary>
+        /// 查找节点
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        static Node<char> Search(Node<char> root, char value)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            if (root.Data.Equals(value))
+            {
+                return root;
+            }
+
+            if (root.LChild != null)
+            {
+                Node<char> tmp = Search(root.LChild, value);
+                if (tmp != null)
+                {
+                    return tmp;
+                }
+            }
+
+            if (root.RChild != null)
+            {
+                return Search(root.RChild, value);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 统计叶子节点数量
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        static int CountLeafNode(Node<char> node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            if (node.LChild == null && node.RChild == null)
+            {
+                return 1;
+            }
+
+            return CountLeafNode(node.LChild) + CountLeafNode(node.RChild);
+        }
+
+        /// <summary>
+        /// 获取二叉树深度
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        static int GetHeight(Node<char> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            int lh = GetHeight(root.LChild);
+            int rh = GetHeight(root.RChild);
+            return (lh > rh ? lh : rh) + 1;
+        }
+
+        /// <summary>
+        /// 输出树结构
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        static void PrintTree(Node<char> root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            int deep = GetHeight(root);
+
+            CSeqQueue<Node<char>> sq = new CSeqQueue<Node<char>>(50);
+            sq.In(root);
+            while (!sq.IsEmpty())
+            {
+                Node<char> tmp = sq.Out();
+                for (int i = 1; i < deep; i++)
+                {
+                    Console.Write('\t');
+                }
+                Console.Write(tmp.Data);
+                deep--;
+
+                //Print(tmp);
+
+                if (tmp.LChild != null)
+                {
+                    sq.In(tmp.LChild);
+                }
+
+                if (tmp.RChild != null)
+                {
+                    sq.In(tmp.RChild);
+                }
+                Console.WriteLine();
+            }
+        }
+
+
 
         /// <summary>
         /// 输出
