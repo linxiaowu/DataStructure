@@ -59,6 +59,7 @@
     <Compile Include="Chapter3\StackTest.cs" />
     <Compile Include="Chapter4\StringDS.cs" />
     <Compile Include="Chapter4\StringDSTest.cs" />
+    <Compile Include="Chapter5\BiTree.cs" />
     <Compile Include="Chapter5\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
