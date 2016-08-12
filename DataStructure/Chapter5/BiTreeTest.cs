@@ -60,6 +60,7 @@ namespace DataStructure.Chapter5
 
             Console.WriteLine("\r\n输出树结构：");
             PrintTree(tree.Head);
+            PrintTree2(tree.Head);
         }
 
         /// <summary>
@@ -247,36 +248,128 @@ namespace DataStructure.Chapter5
             {
                 return;
             }
+
             int deep = GetHeight(root);
+            int cNum = 1;   //当前层级节点数量
+            int oNum = 0;   //当前层级已输出节点数量
+            int num = 0;    //孩子层级节点数量
+
+            string str = "";
+
+            Console.WriteLine("12345678901234567890");
 
             CSeqQueue<Node<char>> sq = new CSeqQueue<Node<char>>(50);
             sq.In(root);
             while (!sq.IsEmpty())
             {
                 Node<char> tmp = sq.Out();
-                for (int i = 1; i < deep; i++)
+                if (oNum++ % 2 == 0)
                 {
-                    Console.Write('\t');
+                    str = FormatSapce(deep);
                 }
-                Console.Write(tmp.Data);
-                deep--;
-
-                //Print(tmp);
-
-                if (tmp.LChild != null)
+                else
                 {
-                    sq.In(tmp.LChild);
+                    str = FormatSapce(deep, 1);
                 }
 
-                if (tmp.RChild != null)
+                Console.Write(string.Format(str, tmp == null ? ' ' : tmp.Data));
+
+                if (tmp == null)
                 {
-                    sq.In(tmp.RChild);
+                    continue;
                 }
-                Console.WriteLine();
+
+                sq.In(tmp.LChild);
+                sq.In(tmp.RChild);
+                num += 2;
+
+                //当前层无节点
+                if (--cNum == 0)
+                {
+                    //换行并切换到下一行
+                    Console.WriteLine();
+                    deep--;
+                    cNum = num;
+                    oNum = num = 0;
+                }
             }
+
+            Console.WriteLine();
         }
 
+        /// <summary>
+        /// 输出树结构
+        /// </summary>
+        /// <![CDATA[将二叉树认作为一个满二叉树，若节点不存在则以null替代]]>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        static void PrintTree2(Node<char> root)
+        {
+            if (root == null)
+            {
+                return;
+            }
 
+            int deep = GetHeight(root);
+            int index = 0;  //当前树层级，孩子数量（Math.Pow(2, index)）
+            int cIndex = 0; //当前层级孩子索引，last：cIndex = Math.Pow(2, index)-1
+
+            string str = "";
+
+            Console.WriteLine("12345678901234567890");
+
+            CSeqQueue<Node<char>> sq = new CSeqQueue<Node<char>>(50);
+            sq.In(root);
+            while (!sq.IsEmpty())
+            {
+                Node<char> tmp = sq.Out();
+                if (cIndex % 2 == 0)
+                {
+                    str = FormatSapce(deep - index);
+                }
+                else
+                {
+                    str = FormatSapce(deep - index, 1);
+                }
+
+                Console.Write(string.Format(str, tmp == null ? ' ' : tmp.Data));
+
+                if (tmp == null)
+                {
+                    continue;
+                }
+
+                sq.In(tmp.LChild);
+                sq.In(tmp.RChild);
+
+                //当前层无节点
+                if (cIndex++ == (int)Math.Pow(2, index) - 1)
+                {
+                    //换行并切换到下一行
+                    Console.WriteLine();
+                    index++;
+                    cIndex = 0;
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// 输出空格占位符
+        /// </summary>
+        /// <param name="deep"></param>
+        static string FormatSapce(int deep, int offset = 0)
+        {
+            if (deep < 1)
+            {
+                return "{0}";
+            }
+
+            string str = new string(' ', (int)Math.Pow(2, deep - 1) + offset - 1);
+
+            return str + "{0}" + str;
+        }
 
         /// <summary>
         /// 输出
